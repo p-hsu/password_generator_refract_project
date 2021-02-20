@@ -16,8 +16,12 @@ function genPswd() {
   var userLength = window.prompt(
     "Please enter a number  between 8 - 128 for the length of your password:"
   );
-  // IF condition 8 - 128 FALSE (using operators and logic)
-  if (!(userLength >= 8) && userLength <= 128) {
+      // IF condition 8 - 128 FALSE (no entry)
+  if (!userLength) {
+      // THEN DISPLAY alert "requires input"
+      window.alert("Your input was empty, this criteria is required!");
+  // IF condition 8 - 128 FALSE (outside parameters)
+  } else if (!(userLength >= 8 && userLength <= 128)) {
     // THEN DISPLAY alert  "number must be between 8 - 128"
     window.alert("Number chosen MUST be between 8 and 128.");
     // ELSE condition 8 - 128 is TRUE (using operators and logic)
