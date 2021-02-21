@@ -1,13 +1,18 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Declare variables to be used in password generator sequence
+// Declare variables in global scope
 
-var special = [' !#$%&"()*+,-./:;<=>?@[]^_`{|}~'];
-var numbers = ["1234567890"];
-var lowerCase = ["abcdefghijklmnopqrstuvwxyz"];
-var upperCase = ["ABCDEFGHIJKLMNOPQRSTUVWXYX"];
-var userCriteria = [""];
+var special = ["!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "| " ,"}", "~"];
+var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "M", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var userCriteria;
+var userPassword = [];
+var yesSpec;
+var yesNum;
+var yesLo;
+var yesUp;
 
 //Click button (event-type) to start prompts (event handler)
 generateBtn.addEventListener("click", genPswd);
@@ -27,35 +32,83 @@ function genPswd() {
     // ELSE condition 8 - 128 is TRUE (using operators and logic)
   } else {
     //DISPLAY character-type confirmations
-    special = window.confirm("Do you want to include special characters?");
-    numbers = window.confirm("Do you want to include numbers?");
-    lowerCase = window.confirm("Do you want to include lower-case characters?");
-    upperCase = window.confirm("Do you want to include upper-case characters?");
-  }
-}
-// LOOP FOR each possible combination
-// none ==> ALERT  "Must choose at least one character-type criteria.""
-// all ==>
-// special
-// number
-// lowercase
-// uppercase
-// special + number
-// special + lowercase
-// special + uppercase
-// special + number + lowercase
-// special + number + uppercase
-// special + lowercase + uppercase
-// number + lowercase
-// number + uppercase
-// number + lowercase + uppercase
-// lowercase + uppercase
+    yesSpec = window.confirm("Do you want to include special characters?");
+    yesNum = window.confirm("Do you want to include numbers?");
+    yesLo = window.confirm("Do you want to include lower-case characters?");
+    yesUp = window.confirm("Do you want to include upper-case characters?");
+  };
 
-// VALIDATE user selections "Are these criteria correct?"
-// IF condition FALSE (cancel button clicked)
-// THEN output "Oops, start again." in "Your Secure Password"
+  // CONDITIONAL functions
+  // none ==> ALERT  "Must choose at least one character-type criteria.""
+  if (!(yesSpec && yesNum && yesLo && yesUp)) {
+    window.alert("You MUST choose at least one character-type.");
+  }
+  // 4 character-types: use concat for results
+  else if (yesSpec && yesNum && yesLo && yesU) {
+    userCriteria = special.concat(numbers, lowerCase, upperCase);
+  }
+  // 3 character-types
+  // special + number + lo
+  else if (yesSpec && yesNum && yesLo) {
+    userCriteria = special.concat(numbers, lowerCase);
+  }
+  // special + number + up
+  else if (yesSpec && yesNum && yesUp) {
+    userCriteria = special.concat(numbers, upperCase);
+  }
+  // number + lo + up
+  else if (yesNum && yesLo && yesUp) {
+    userCriteria = numbers.concat(lowerCase, upperCase);
+  }
+  // 2 character-types
+  // special + number
+  else if (yesSpec && yesNum) {
+    userCriteria = special.concat(numbers);
+  }
+  // special + lo
+  else if (yesSpec && yesLo) {
+    userCriteria = special.concat(lowerCase);
+  }
+  // special + up
+  else if (yesSpec && yesUp) {
+    userCriteria = special.concat(upperCase);
+  }
+  // number + lo
+  else if (yesNum && yesLo) {
+    userCriteria = numbers.concat(lowerCase);
+  }
+  // number + up
+  else if (yesNum && yesUp) {
+    userCriteria = numbers.concat(upperCase);
+  }
+  // lo + up
+  else if (yesLo && yesUp) {
+    userCriteria = lowerCase.concat(upperCase);
+  }
+  // 1 character-type
+  // special only
+  else if (yesSpec) {
+    userCriteria = special;
+  }
+  // number only
+  else if (yesNum) {
+    userCriteria = numbers;
+  }
+  // lowercase only
+  else if (yesLo) {
+    userCriteria = lowercase;
+  }
+  // uppercase only
+  else if (yesUp) {
+    userCriteria = uppercase;
+  }
+
+  // VALIDATE user selections "Are these criteria correct?"
+
 // ELSE condition TRUE (ok button clicked)
-// THEN return  password to the #password input
+// THEN LOOP statement for random selection of variables
+}
+// INPUTS password to textarea
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
