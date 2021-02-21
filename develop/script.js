@@ -4,12 +4,12 @@ var special = ["!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-",
 var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "M", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var userCriteria;
 var userLength;
 var yesSpec;
 var yesNum;
 var yesLo;
 var yesUp;
+var userCriteria = [];
 var userPassword = [];
 
 var generateBtn = document.querySelector("#generate");
@@ -103,7 +103,6 @@ function genPswd() {
   };
 
   // Random selection for user chosen variables
-
   for (var i = 0; i < userLength; i++) {
     var randomArr = userCriteria[Math.floor(Math.random() * userCriteria.length)];
     userPassword.push(randomArr);
@@ -117,5 +116,4 @@ function genPswd() {
 function inputPassword(e) {
     document.getElementById("password").textContent = e;
 }
-
 // END
