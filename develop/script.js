@@ -22,7 +22,7 @@ function genPswd() {
       // IF condition 8 - 128 FALSE (no entry)
   if (!userLength) {
       // THEN DISPLAY alert "requires input"
-      window.alert("Your input was empty, this criteria is required!");
+      parseInt(window.alert("Your input was empty, this criteria is required!"));
   // IF condition 8 - 128 FALSE (outside parameters)
   } else if (!(userLength >= 8 && userLength <= 128)) {
     // THEN DISPLAY alert  "number must be between 8 - 128"
@@ -109,17 +109,13 @@ function genPswd() {
     userPassword.push(randomArr);
   }
   
-  return userPassword.join("");
+  var e = userPassword.join("");
+  inputPassword(e);
+  return e;
 }
 // INPUTS password to textarea
-function writePassword() {
-  var password = genPswd();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
+function inputPassword(e) {
+    document.getElementById("password").textContent = e;
 }
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
 
 // END
