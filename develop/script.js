@@ -10,7 +10,6 @@ var yesNum;
 var yesLo;
 var yesUp;
 var userCriteria = [];
-var userPassword = [];
 
 var generateBtn = document.querySelector("#generate");
 
@@ -23,10 +22,14 @@ function genPswd() {
   if (!userLength) {
       // THEN DISPLAY alert "requires input"
       parseInt(window.alert("Your input was empty, this criteria is required!"));
+      // RECURSION
+      return genPswd();
   // IF condition 8 - 128 FALSE (outside parameters)
   } else if (!(userLength >= 8 && userLength <= 128)) {
     // THEN DISPLAY alert  "number must be between 8 - 128"
     parseInt(window.alert("Number chosen MUST be between 8 and 128."));
+    // RECURSION
+      return genPswd();
     // ELSE condition 8 - 128 is TRUE (using operators and logic)
   } else {
     //DISPLAY character-type confirmations
@@ -91,18 +94,21 @@ function genPswd() {
   }
   // lowercase only
   else if (yesLo) {
-    userCriteria = lowercase;
+    userCriteria = lowerCase;
   }
   // uppercase only
   else if (yesUp) {
-    userCriteria = uppercase;
+    userCriteria = upperCase;
   }
   // none ==> ALERT  "Must choose at least one character-type criteria.""
   else if (!yesSpec && !yesNum && !yesLo && !yesUp) {
-    userCriteria = window.alert("You MUST choose at least one character-type.");
+    window.alert("You MUST choose at least one character-type.");
   };
 
   // Random selection for user chosen variables
+  // variable to be declared locally so password results will not append *GOOD PRACTICE WHEN USING VAR
+  var userPassword = []
+
   for (var i = 0; i < userLength; i++) {
     var randomArr = userCriteria[Math.floor(Math.random() * userCriteria.length)];
     userPassword.push(randomArr);
