@@ -21,7 +21,7 @@ would provide several prompts for certain user-input criteria.
 ### Process
 
 Writing pseudo-code provides logical steps in breaking down a bigger problem into each
-individual blocks. Please refer to the comments retained in the `scipt.js` file.
+individual blocks. Please refer to the comments retained in the `script.js` file.
 
 ## Installation
 
@@ -29,21 +29,21 @@ individual blocks. Please refer to the comments retained in the `scipt.js` file.
 2. Open Terminal (MacOS) or Git Bash (Windows) and change location to where you want the cloned directory
 3. Type `git clone` and paste copied respository
 4. Directory should include the following:
-    * develop folder
-        * `index.html` *no modifications*
-        * `script.js`
-        * `style.css` *no modifications*
+    * assets folder
+        * images folder *for `README.md` only*
+        * javascript folder: `script.js`
+        * css folder: `style.css` *no modifications*
+    * `index.html` *modified pathfiles due to directory structuring*
     * `README.md`
 
 ## Screenshot
 
 **Password Generator Application**
 
-![Animated GIF of application:](./Assets/images/full-page-screenshot.png)
+![Animated GIF of application:](./assets/images/psw-gen.gif)
 
 
 ## Deployment
-*Note: this page contains some links that yield no webpage.*
 
 Please use the following link to deploy live URL of this project:
 
@@ -52,4 +52,5 @@ Please use the following link to deploy live URL of this project:
 ## Credit
 
 * Original HTML, CSS, and JavaScript code referenced are owned by © 2021 Trilogy Education Services, LLC, a 2U, Inc. brand
-* Animated GIF created using screencastify 
+* Animated GIF created using screencastify
+* Learning Assistant tutor helped with issues pertaining to: global/local scope and recursion/terminating functions
